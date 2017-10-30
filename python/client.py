@@ -15,12 +15,15 @@ from app import (
 from thriftpy.rpc import make_client
 
 client = make_client(hackthon_thrift.Hackthon, "127.0.0.1", 9099)
-image = Image.open("./mosaic/1013.png")
-s = client.restore(image2str(image))
-client.close()
+image = Image.open("./mosaic/1001.png")
 
+s = client.restore(image2str(image))
 str2image(s).show()
 
+s = client.restore(s)
+str2image(s).show()
+
+client.close()
 
 if __name__ == "__main__":
     pass
